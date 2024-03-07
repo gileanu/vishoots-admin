@@ -1,0 +1,89 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  directUrl         = env("DIRECT_URL")
+  relationMode      = "prisma"
+}
+
+model Portfolio {
+  id                String      @id @default(uuid())
+  name              String
+  userId            String
+  billboards        Billboard[] @relation("PortfolioToBillboard")
+  categories        Category[]  @relation("PortfolioToCategory")
+  galleries         Gallery[]   @relation("PortfolioToGallery")
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+}
+
+model Billboard {
+  id                String      @id @default(uuid())
+  portfolioId       String
+  portfolio         Portfolio   @relation("PortfolioToBillboard", fields: [portfolioId], references: [id])
+  imageUrl          String
+  categories        Category[]
+  label             String
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  @@index([portfolioId])
+}
+
+model Category {
+  id                String      @id @default(uuid())
+  portfolioId       String
+  portfolio         Portfolio   @relation("PortfolioToCategory", fields: [portfolioId], references: [id])
+  billboardId       String
+  billboard         Billboard   @relation(fields: [billboardId], references: [id])
+  galleries         Gallery[]   @relation("CategoryToGallery")
+  name              String
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  @@index([portfolioId])
+  @@index([billboardId])
+}
+
+model Gallery {
+  id                String      @id @default(uuid())
+  featImage         String
+  images            Image[]
+  title             String
+  location          String
+  specs             String
+  portfolioId       String
+  portfolio         Portfolio   @relation("PortfolioToGallery", fields: [portfolioId], references: [id])
+  categoryId        String       
+  category          Category    @relation("CategoryToGallery", fields: [categoryId], references: [id])
+  isFeatured        Boolean     @default(false)
+  isArchived        Boolean     @default(false)
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  @@index([portfolioId])
+  @@index([categoryId])
+}
+
+model Image {
+  id                String      @id @default(uuid())
+  galleryId         String
+  gallery           Gallery     @relation(fields: [galleryId], references: [id], onDelete: Cascade)
+  url               String
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+
+  @@index([galleryId])
+}
+
+model Contact {
+  id                String      @id @default(uuid())
+  name              String
+  email             String
+  message           String
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+}
