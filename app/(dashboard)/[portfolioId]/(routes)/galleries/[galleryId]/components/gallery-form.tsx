@@ -40,6 +40,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
+import { generateSlug } from "@/lib/name-to-slug";
 
 const formSchema = z.object({
   title: z.string().min(1, "Gallery name must be at least 1 character long"),
@@ -106,9 +107,14 @@ export const GalleryForm: React.FC<GalleryFormProps> = ({
     try {
       setLoading(true);
       if (initialData) {
+        const slug = generateSlug(data.title);
+        const requestData = {
+          ...data,
+          categorySlug: slug,
+        };
         await axios.patch(
           `/api/${params.portfolioId}/galleries/${params.galleryId}`,
-          data
+          requestData
         );
       } else {
         await axios.post(`/api/${params.portfolioId}/galleries`, data);

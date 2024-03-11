@@ -26,12 +26,16 @@ export async function GET(
 
 export async function PATCH(
   req: Request,
-  { params }: { params: { portfolioId: string; categoryId: string } }
+  {
+    params,
+  }: {
+    params: { portfolioId: string; categoryId: string; categorySlug: string };
+  }
 ) {
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { name, billboardId } = body;
+    const { name, billboardId, categorySlug } = body;
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 401 });
     }
@@ -63,6 +67,7 @@ export async function PATCH(
       data: {
         name,
         billboardId,
+        categorySlug,
       },
     });
     return NextResponse.json(category);

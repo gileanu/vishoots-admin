@@ -4,13 +4,13 @@ import { NextResponse } from "next/server";
 
 export async function POST(
   req: Request,
-  { params }: { params: { portfolioId: string } }
+  { params }: { params: { portfolioId: string; categorySlug: string } }
 ) {
   try {
     const { userId } = auth();
     const body = await req.json();
 
-    const { name, billboardId } = body;
+    const { name, billboardId, categorySlug } = body;
 
     if (!userId) {
       return new NextResponse("Unauthorised", { status: 401 });
@@ -42,6 +42,7 @@ export async function POST(
       data: {
         name,
         billboardId,
+        categorySlug,
         portfolioId: params.portfolioId,
       },
     });
@@ -55,7 +56,7 @@ export async function POST(
 
 export async function GET(
   req: Request,
-  { params }: { params: { portfolioId: string } }
+  { params }: { params: { portfolioId: string; categorySlug: string } }
 ) {
   try {
     if (!params.portfolioId) {

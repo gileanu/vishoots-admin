@@ -18,6 +18,7 @@ export async function POST(
       categoryId,
       isFeatured,
       isArchived,
+      gallerySlug,
     } = body;
 
     if (!userId) {
@@ -58,6 +59,7 @@ export async function POST(
     const gallery = await prismadb.gallery.create({
       data: {
         title,
+        gallerySlug,
         location,
         specs,
         featImage,

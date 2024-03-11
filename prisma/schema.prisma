@@ -41,6 +41,7 @@ model Category {
   billboard         Billboard   @relation(fields: [billboardId], references: [id])
   galleries         Gallery[]   @relation("CategoryToGallery")
   name              String
+  categorySlug      String
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
 
@@ -53,6 +54,7 @@ model Gallery {
   featImage         String
   images            Image[]
   title             String
+  gallerySlug       String
   location          String
   specs             String
   portfolioId       String

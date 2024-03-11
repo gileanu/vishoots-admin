@@ -37,6 +37,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { generateSlug } from "@/lib/name-to-slug";
 
 const formSchema = z.object({
   name: z.string().min(5, "Portfolio name must be at least 5 characters long"),
@@ -56,7 +57,6 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
 }) => {
   const params = useParams();
   const router = useRouter();
-  const origin = useOrigin();
 
   const [open, setOpen] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -77,13 +77,18 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({
   const onSubmit = async (data: CategoryFormValues) => {
     try {
       setLoading(true);
+      const slug = generateSlug(data.name);
+      const requestData = {
+        ...data,
+        categorySlug: slug,
+      };
       if (initialData) {
         await axios.patch(
           `/api/${params.portfolioId}/categories/${params.categoryId}`,
-          data
+          requestData
         );
       } else {
-        await axios.post(`/api/${params.portfolioId}/categories`, data);
+        await axios.post(`/api/${params.portfolioId}/categories`, requestData);
       }
       router.push(`/${params.portfolioId}/categories`);
       toast.success(toastMsg);
