@@ -13,7 +13,6 @@ import {
 import { HeadingH1 } from "@/components/ui/headingh1";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
-import { useOrigin } from "@/hooks/use-origin";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Billboard, Category } from "@prisma/client";
 import axios from "axios";

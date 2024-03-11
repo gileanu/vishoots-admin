@@ -106,18 +106,18 @@ export const GalleryForm: React.FC<GalleryFormProps> = ({
   const onSubmit = async (data: GalleryFormValues) => {
     try {
       setLoading(true);
+      const slug = generateSlug(data.title);
+      const requestData = {
+        ...data,
+        gallerySlug: slug,
+      };
       if (initialData) {
-        const slug = generateSlug(data.title);
-        const requestData = {
-          ...data,
-          categorySlug: slug,
-        };
         await axios.patch(
           `/api/${params.portfolioId}/galleries/${params.galleryId}`,
           requestData
         );
       } else {
-        await axios.post(`/api/${params.portfolioId}/galleries`, data);
+        await axios.post(`/api/${params.portfolioId}/galleries`, requestData);
       }
       router.push(`/${params.portfolioId}/galleries`);
       toast.success(toastMsg);

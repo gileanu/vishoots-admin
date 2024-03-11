@@ -45,6 +45,7 @@ export async function PATCH(
       categoryId,
       isFeatured,
       isArchived,
+      gallerySlug,
     } = body;
 
     if (!userId) {
@@ -101,6 +102,7 @@ export async function PATCH(
         categoryId,
         isFeatured,
         isArchived,
+        gallerySlug,
       },
     });
 
@@ -114,6 +116,7 @@ export async function PATCH(
             data: [...images.map((image: { url: string }) => image)],
           },
         },
+        gallerySlug,
       },
     });
 
