@@ -64,6 +64,8 @@ export async function POST(
         specs,
         featImage,
         categoryId,
+        isFeatured,
+        isArchived,
         portfolioId: params.portfolioId,
         images: {
           createMany: {
@@ -85,8 +87,11 @@ export async function GET(
   { params }: { params: { portfolioId: string; gallerySlug: string } }
 ) {
   try {
+    const { searchParams } = new URL(req.url);
+    const categoryId = searchParams.get("categoryId") || undefined;
+    const isFeatured = searchParams.get("isFeatured");
     if (!params.portfolioId) {
-      return new NextResponse("Portfolio id name is required", {
+      return new NextResponse("Portfolio id is required", {
         status: 400,
       });
     }
@@ -94,6 +99,9 @@ export async function GET(
     const gallery = await prismadb.gallery.findMany({
       where: {
         portfolioId: params.portfolioId,
+        categoryId,
+        isFeatured: isFeatured ? true : undefined,
+        isArchived: false,
       },
       include: {
         images: true,
