@@ -43,7 +43,10 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { generateSlug } from "@/lib/name-to-slug";
 
 const formSchema = z.object({
-  title: z.string().min(1, "Gallery name must be at least 1 character long"),
+  title: z
+    .string()
+    .max(20, "Max 20 characters")
+    .min(1, "Gallery title is required"),
   images: z
     .array(
       z.object({
@@ -51,8 +54,8 @@ const formSchema = z.object({
       })
     )
     .nonempty(),
-  location: z.string().optional(),
-  specs: z.string().optional(),
+  location: z.string().max(20, "Max 28 characters").optional(),
+  specs: z.string().max(20, "Max 28 characters").optional(),
   featImage: z.string().min(1, "Gallery featured image is required"),
   categoryId: z.string().min(1, "Category is required"),
   isFeatured: z.boolean().default(false).optional(),
