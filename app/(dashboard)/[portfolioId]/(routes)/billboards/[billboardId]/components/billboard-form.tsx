@@ -33,7 +33,7 @@ import {
 } from "@/components/ui/accordion";
 
 const formSchema = z.object({
-  label: z.string().min(5, "Portfolio name must be at least 5 characters long"),
+  label: z.string().max(40, "Billboard text is max 40 charactes"),
   imageUrl: z.string().min(1, "Billboard image is required"),
 });
 
