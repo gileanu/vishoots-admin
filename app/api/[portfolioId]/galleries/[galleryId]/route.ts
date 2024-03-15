@@ -54,14 +54,6 @@ export async function PATCH(
     if (!title) {
       return new NextResponse("Title is required", { status: 400 });
     }
-    if (!location) {
-      return new NextResponse("Location POST error", {
-        status: 400,
-      });
-    }
-    if (!specs) {
-      return new NextResponse("Specs is required", { status: 400 });
-    }
     if (!featImage) {
       return new NextResponse("Featured image is required", { status: 400 });
     }
