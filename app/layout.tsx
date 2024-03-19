@@ -6,7 +6,6 @@ import { ThemeProvider } from "@/providers/theme-provider";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ModalProvider } from "@/providers/modal-provider";
 import { ToasterProvider } from "@/providers/toast-provider";
-import Container from "@/components/ui/page-container";
 
 const inter = Inter({ subsets: ["latin"] });
 

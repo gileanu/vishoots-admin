@@ -11,6 +11,8 @@ interface ImageUploadProps {
   disabled?: boolean;
   onChange: (value: string) => void;
   onRemove: (value: string) => void;
+  imageH: (value: string) => void;
+  imageW: (value: string) => void;
   value: string[];
 }
 
@@ -18,6 +20,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
   disabled,
   onChange,
   onRemove,
+  imageH,
+  imageW,
   value,
 }) => {
   const [isMonted, setIsMounted] = useState(false);
