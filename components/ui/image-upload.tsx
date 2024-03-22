@@ -55,7 +55,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
               </div>
               <Image
                 fill
-                quality={40}
+                quality={20}
+                unoptimized
                 className="object-cover"
                 alt="Image"
                 src={url}
@@ -63,7 +64,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
             </div>
           ))}
         </div>
-        <ScrollBar orientation="horizontal" />
+        <ScrollBar className="" orientation="horizontal" />
       </ScrollArea>
       <CldUploadWidget onUpload={onUpload} uploadPreset="kgqyytvy">
         {({ open }) => {
