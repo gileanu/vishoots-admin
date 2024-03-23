@@ -66,7 +66,7 @@ export const CategoryClient: React.FC<CategoryClientProps> = ({ data }) => {
           <AccordionContent>
             <p className="p-1">
               This includes API calls for GET, POST, PATCH, and DELETE methods.
-              Here's what each one does:
+              Here&apos;s what each one does:
               <ol className="p-2">
                 <li>
                   GET: Retrieves data from the server. It is used to read or

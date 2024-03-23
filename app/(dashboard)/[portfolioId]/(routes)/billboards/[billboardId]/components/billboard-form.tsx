@@ -182,7 +182,7 @@ export const BillboardForm: React.FC<BillboardFormProps> = ({
               as the main image for your galleries.
             </p>
             <p className="p-1">
-              The billboard label denotes the gallery's name, prominently
+              The billboard label denotes the gallery&apos;s name, prominently
               displayed in front of the billboard image on the live website.
             </p>
           </AccordionContent>
