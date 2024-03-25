@@ -12,9 +12,6 @@ const CategoriesPage = async ({
     where: {
       portfolioId: params.portfolioId,
     },
-    include: {
-      billboard: true,
-    },
     orderBy: {
       createdAt: "desc",
     },
@@ -23,7 +20,7 @@ const CategoriesPage = async ({
   const formattedCategories: CategoryColumn[] = categories.map((item) => ({
     id: item.id,
     name: item.name,
-    billboardLabel: item.billboard.label,
+    categoryDesc: item.categoryDesc,
     createdAt: format(item.createdAt, "dd LLL, yyyy"),
   }));
   return (
