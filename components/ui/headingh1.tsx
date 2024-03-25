@@ -1,6 +1,6 @@
 interface HeadingH1Props {
-  title: string;
-  desc: string;
+  title: string | undefined;
+  desc: string | undefined;
 }
 
 export const HeadingH1: React.FC<HeadingH1Props> = ({ title, desc }) => {

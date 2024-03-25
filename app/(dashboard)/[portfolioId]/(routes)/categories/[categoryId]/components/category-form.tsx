@@ -40,9 +40,11 @@ import { generateSlug } from "@/lib/name-to-slug";
 import BillImageUpload from "@/components/ui/bill-image-upload";
 
 const formSchema = z.object({
-  name: z.string().min(5, "Portfolio name must be at least 5 characters long"),
-  imageUrl: z.string().min(1, "Billboard is required"),
-  categoryDesc: z.string().min(1, "Category description is required"),
+  name: z.string().min(3, "Category name must be at least 3 characters long"),
+  imageUrl: z.string().min(1, "Billboard image is required"),
+  categoryDesc: z
+    .string()
+    .min(3, "Category description must be at least 3 characters long"),
 });
 
 type CategoryFormValues = z.infer<typeof formSchema>;
@@ -160,7 +162,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
               </FormItem>
             )}
           />
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="categoryDesc"
