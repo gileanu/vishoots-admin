@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 
-import { usePortfolioModal } from "@/hooks/use-store-modal";
+import { usePortfolioModal } from "@/hooks/use-portfolio-modal";
 
 const SetupPage = () => {
   const onOpen = usePortfolioModal((state) => state.onOpen);

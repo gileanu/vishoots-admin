@@ -51,7 +51,7 @@ const BillImageUpload: React.FC<BillImageUploadProps> = ({
               </Button>
             </div>
             <Image
-              quality={50}
+              quality={20}
               fill
               unoptimized
               className="object-cover"

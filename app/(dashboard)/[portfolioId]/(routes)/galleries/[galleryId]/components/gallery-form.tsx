@@ -27,12 +27,6 @@ import ImageUpload from "@/components/ui/image-upload";
 import { Category, Gallery, Image } from "@prisma/client";
 
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -182,7 +176,7 @@ export const GalleryForm: React.FC<GalleryFormProps> = ({
             name="featImage"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Gallery Featured Image</FormLabel>
+                <FormLabel>Gallery Featured Image &#42;</FormLabel>
                 <FormControl>
                   <BillImageUpload
                     disabled={loading}
@@ -200,7 +194,7 @@ export const GalleryForm: React.FC<GalleryFormProps> = ({
             name="images"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Gallery images</FormLabel>
+                <FormLabel>Gallery images &#42;</FormLabel>
                 <FormControl>
                   <ImageUpload
                     value={field.value.map((image) => image.url)}
@@ -225,11 +219,11 @@ export const GalleryForm: React.FC<GalleryFormProps> = ({
               name="title"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Gallery title</FormLabel>
+                  <FormLabel>Gallery title &#42;</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
-                      placeholder="Gallery name"
+                      placeholder="Gallery title"
                       {...field}
                     />
                   </FormControl>
@@ -242,7 +236,7 @@ export const GalleryForm: React.FC<GalleryFormProps> = ({
               name="categoryId"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Category</FormLabel>
+                  <FormLabel>Category &#42;</FormLabel>
                   <Select
                     disabled={loading}
                     onValueChange={field.onChange}
@@ -316,7 +310,8 @@ export const GalleryForm: React.FC<GalleryFormProps> = ({
                   <div className="space-y-1 leading-none">
                     <FormLabel>Featured</FormLabel>
                     <FormDescription>
-                      This gallery will be featured on the Featured sections.
+                      This gallery will be featured on the homepage when
+                      checked.
                     </FormDescription>
                   </div>
                 </FormItem>
@@ -336,34 +331,23 @@ export const GalleryForm: React.FC<GalleryFormProps> = ({
                   <div className="space-y-1 leading-none">
                     <FormLabel>Archive</FormLabel>
                     <FormDescription>
-                      Temporarly hide from the website if checked.
+                      Temporarily hide gallery from the website when checked.
                     </FormDescription>
                   </div>
                 </FormItem>
               )}
             />
           </div>
-          <Button disabled={loading} type="submit">
-            {action}
-          </Button>
+          <div className="flex">
+            <Button disabled={loading} type="submit">
+              {action}
+            </Button>
+            <p className="ml-auto text-muted-foreground text-sm">
+              &#42; fields are required
+            </p>
+          </div>
         </form>
       </Form>
-      <Separator />
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Billboard Image and Label info</AccordionTrigger>
-          <AccordionContent>
-            <p className="p-1">
-              The billboard image acts as the hero image, prominently featured
-              as the main image for your galleries.
-            </p>
-            <p className="p-1">
-              The billboard label denotes the gallery&apos;s name, prominently
-              displayed in front of the billboard image on the live website.
-            </p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
     </>
   );
 };

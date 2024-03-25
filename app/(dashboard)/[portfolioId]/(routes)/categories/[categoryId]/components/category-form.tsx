@@ -23,19 +23,6 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import * as z from "zod";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { generateSlug } from "@/lib/name-to-slug";
 import BillImageUpload from "@/components/ui/bill-image-upload";
 
@@ -149,7 +136,7 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
             name="imageUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Category billboard</FormLabel>
+                <FormLabel>Category billboard &#42;</FormLabel>
                 <FormControl>
                   <BillImageUpload
                     disabled={loading}
@@ -165,27 +152,10 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <FormField
               control={form.control}
-              name="categoryDesc"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Description</FormLabel>
-                  <FormControl>
-                    <Input
-                      disabled={loading}
-                      placeholder="Category short description"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            <FormField
-              control={form.control}
               name="name"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Name</FormLabel>
+                  <FormLabel>Name &#42;</FormLabel>
                   <FormControl>
                     <Input
                       disabled={loading}
@@ -197,28 +167,34 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
                 </FormItem>
               )}
             />
+            <FormField
+              control={form.control}
+              name="categoryDesc"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Description &#42;</FormLabel>
+                  <FormControl>
+                    <Input
+                      disabled={loading}
+                      placeholder="Category short description"
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
           </div>
-          <Button disabled={loading} type="submit">
-            {action}
-          </Button>
+          <div className="flex">
+            <Button disabled={loading} type="submit">
+              {action}
+            </Button>
+            <p className="ml-auto text-muted-foreground text-sm">
+              &#42; fields are required
+            </p>
+          </div>
         </form>
       </Form>
-      <Separator />
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Category info</AccordionTrigger>
-          <AccordionContent>
-            <p className="p-1">
-              Categories serve as the primary galleries within which you will
-              store all the sub-galleries
-            </p>
-            <p className="p-1">
-              When creating a new category, select a billboard that closely
-              resembles the images that will be hosted within the category.
-            </p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
     </>
   );
 };

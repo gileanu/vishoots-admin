@@ -1,12 +1,6 @@
 "use client";
 
 import { AlertModal } from "@/components/modals/alert-modal";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
 import { ApiAlert } from "@/components/ui/api-alert";
 import { Button } from "@/components/ui/button";
 import {
@@ -107,7 +101,7 @@ export const SettingsForm: React.FC<SettingFormProps> = ({ initialData }) => {
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-4 w-full"
         >
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             <FormField
               control={form.control}
               name="name"
@@ -131,46 +125,16 @@ export const SettingsForm: React.FC<SettingFormProps> = ({ initialData }) => {
           </Button>
         </form>
       </Form>
+      <HeadingH1
+        title="Main API call"
+        desc="Main API call to send data to the live website"
+      />
       <Separator />
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>Portfolio name info</AccordionTrigger>
-          <AccordionContent>
-            <p className="p-1">
-              Manage your portfolio with options to rename, delete, and access
-              the API key directly from this page.
-            </p>
-            <p className="p-1">
-              Before deleting your portfolio, ensure all associated billboards
-              are removed.
-            </p>
-            <div className="inline-flex items-center rounded-xl border px-2 py-1 text-md transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent bg-destructive text-destructive-foreground">
-              Deleting the Portfolio will break the live website
-            </div>
-            <p className="p-1">
-              Currently the portfolio name holds no functional significance on
-              the backend or the frontend (Live website). It is just used as a
-              label here and on the database.
-            </p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
       <ApiAlert
         title="NEXT_PUBLIC_API_URL"
         desc={`${origin}/api/${params.portfolioId}`}
         variant="public"
       />
-      <Accordion type="single" collapsible className="w-full">
-        <AccordionItem value="item-1">
-          <AccordionTrigger>API info</AccordionTrigger>
-          <AccordionContent>
-            <p className="p-1">
-              Utilize this API URL to link to the live website. Ensure the
-              website is accessible and that the domain is accurate.
-            </p>
-          </AccordionContent>
-        </AccordionItem>
-      </Accordion>
     </>
   );
 };

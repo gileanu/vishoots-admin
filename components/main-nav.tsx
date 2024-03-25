@@ -17,6 +17,11 @@ export function MainNav({
       active: pathname === `/${params.portfolioId}`,
     },
     {
+      href: `/${params.portfolioId}/settings`,
+      label: "Settings",
+      active: pathname === `/${params.portfolioId}/settings`,
+    },
+    {
       href: `/${params.portfolioId}/categories`,
       label: "Categories",
       active: pathname === `/${params.portfolioId}/categories`,
@@ -25,11 +30,6 @@ export function MainNav({
       href: `/${params.portfolioId}/galleries`,
       label: "Galleries",
       active: pathname === `/${params.portfolioId}/galleries`,
-    },
-    {
-      href: `/${params.portfolioId}/settings`,
-      label: "Settings",
-      active: pathname === `/${params.portfolioId}/settings`,
     },
   ];
   return (
