@@ -1,3 +1,4 @@
+import { HeadingH1 } from "@/components/ui/headingh1";
 import prismadb from "@/lib/prismadb";
 
 interface DashboardPageProps {
@@ -10,7 +11,11 @@ const DashboardPage: React.FC<DashboardPageProps> = async ({ params }) => {
       id: params.portfolioId,
     },
   });
-  return <div>Active Portfolio: {portfolio?.name}</div>;
+  return (
+    <>
+      <HeadingH1 title={portfolio?.name} desc="Portfolio at a glance" />
+    </>
+  );
 };
 
 export default DashboardPage;
