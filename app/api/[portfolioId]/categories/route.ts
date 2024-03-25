@@ -10,16 +10,13 @@ export async function POST(
     const { userId } = auth();
     const body = await req.json();
 
-    const { name, billboardId, categorySlug } = body;
+    const { name, categorySlug, imageUrl, categoryDesc } = body;
 
     if (!userId) {
       return new NextResponse("Unauthorised", { status: 401 });
     }
     if (!name) {
       return new NextResponse("Name is required", { status: 400 });
-    }
-    if (!billboardId) {
-      return new NextResponse("Billboard Id is required", { status: 400 });
     }
     if (!params.portfolioId) {
       return new NextResponse("Portfolio Id name is required", {
@@ -41,8 +38,9 @@ export async function POST(
     const category = await prismadb.category.create({
       data: {
         name,
-        billboardId,
         categorySlug,
+        imageUrl,
+        categoryDesc,
         portfolioId: params.portfolioId,
       },
     });

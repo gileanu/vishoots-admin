@@ -15,9 +15,6 @@ export async function GET(
       where: {
         id: params.categoryId,
       },
-      include: {
-        billboard: true,
-      },
     });
 
     return NextResponse.json(category);
@@ -38,15 +35,12 @@ export async function PATCH(
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { name, billboardId, categorySlug } = body;
+    const { name, billboardId, categorySlug, imageUrl, categoryDesc } = body;
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 401 });
     }
     if (!name) {
       return new NextResponse("Name is required", { status: 400 });
-    }
-    if (!billboardId) {
-      return new NextResponse("Image URL is required", { status: 400 });
     }
     if (!params.categoryId) {
       return new NextResponse("Category id is required", { status: 400 });
@@ -69,8 +63,9 @@ export async function PATCH(
       },
       data: {
         name,
-        billboardId,
         categorySlug,
+        imageUrl,
+        categoryDesc,
       },
     });
     return NextResponse.json(category);

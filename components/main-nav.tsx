@@ -17,11 +17,6 @@ export function MainNav({
       active: pathname === `/${params.portfolioId}`,
     },
     {
-      href: `/${params.portfolioId}/billboards`,
-      label: "Billboards",
-      active: pathname === `/${params.portfolioId}/billboards`,
-    },
-    {
       href: `/${params.portfolioId}/categories`,
       label: "Categories",
       active: pathname === `/${params.portfolioId}/categories`,
