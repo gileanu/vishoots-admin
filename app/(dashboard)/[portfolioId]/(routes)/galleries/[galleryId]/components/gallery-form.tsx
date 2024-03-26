@@ -47,8 +47,7 @@ const formSchema = z.object({
         url: z.string(),
       })
     )
-    .nonempty()
-    .min(1, "Gallery must contain at least one image"),
+    .nonempty(),
   location: z.string().max(20, "Max 28 characters").optional(),
   specs: z.string().max(20, "Max 28 characters").optional(),
   featImage: z.string().min(1, "Gallery featured image is required"),

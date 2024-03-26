@@ -66,7 +66,7 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
         </div>
         <ScrollBar className="" orientation="horizontal" />
       </ScrollArea>
-      <CldUploadWidget onSuccess={onUpload} uploadPreset="kgqyytvy">
+      <CldUploadWidget onUpload={onUpload} uploadPreset="kgqyytvy">
         {({ open }) => {
           const onClick = () => {
             open();

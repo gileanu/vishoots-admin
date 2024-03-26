@@ -37,7 +37,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       toast.success("Category deleted");
     } catch (error) {
       toast.error(
-        "Make sure you remove all galleries using this category first"
+        "Make sure you remove all Galleries using this Category first"
       );
     } finally {
       setLoading(false);

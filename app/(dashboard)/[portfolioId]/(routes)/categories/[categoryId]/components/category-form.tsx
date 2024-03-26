@@ -97,7 +97,9 @@ export const CategoryForm: React.FC<CategoryFormProps> = ({ initialData }) => {
       router.refresh();
       toast.success("Category deleted");
     } catch (error) {
-      toast.error("Make sure you removed all galleries first");
+      toast.error(
+        "Make sure you remove all Galleries using this Category first"
+      );
     } finally {
       setLoading(false);
       setOpen(false);

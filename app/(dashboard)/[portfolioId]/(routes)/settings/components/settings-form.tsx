@@ -69,7 +69,7 @@ export const SettingsForm: React.FC<SettingFormProps> = ({ initialData }) => {
       router.push("/");
       toast.success("Portfolio deleted");
     } catch (error) {
-      toast.error("Make sure you removed all Galleries and Images first");
+      toast.error("Make sure you remove all Categories and Galleries first");
     } finally {
       setLoading(false);
       setOpen(false);
