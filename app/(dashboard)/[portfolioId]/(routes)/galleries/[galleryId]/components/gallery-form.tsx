@@ -168,7 +168,7 @@ export const GalleryForm: React.FC<GalleryFormProps> = ({
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 w-full"
+          className="space-y-4 w-full pb-24"
         >
           <FormField
             control={form.control}
