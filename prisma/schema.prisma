@@ -68,9 +68,12 @@ model Image {
 
 model Contact {
   id                String      @id @default(uuid())
-  name              String
-  email             String
-  message           String
+  name              String      @default("")
+  email             String      @default("")
+  message           String      @default("")
+  phone             String      @default("")
+  date              String      @default("")
+  time              String      @default("")
   createdAt         DateTime    @default(now())
   updatedAt         DateTime    @updatedAt
 }
