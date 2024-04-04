@@ -32,7 +32,7 @@ export async function POST(
     const {
       name,
       email,
-      message = "",
+      message = "No message provided",
       phone,
       date = "No date provided",
       time = "No time provided",

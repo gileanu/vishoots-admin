@@ -12,13 +12,13 @@ interface ContactClientProps {
 export const ContactClient: React.FC<ContactClientProps> = ({ data }) => {
   return (
     <>
-      <div className="flex items-center justify-between">
+      <div className="space-y-4">
         <HeadingH1
-          title={`Leads: (${data.length})`}
+          title={`You have ${data.length} form submitions`}
           desc="View contact form submitions"
         />
+        <Separator />
       </div>
-      <Separator />
       <DataTable searchKey="name" columns={columns} data={data} />
     </>
   );

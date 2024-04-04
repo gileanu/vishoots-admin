@@ -1,4 +1,8 @@
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+
 import prismadb from "@/lib/prismadb";
+import { format } from "date-fns";
+import { CalendarCheck, Text, UploadCloud, User } from "lucide-react";
 
 const contactPage = async ({
   params,
@@ -10,9 +14,94 @@ const contactPage = async ({
       id: params.formId,
     },
   });
+
+  // In viata mea n am scris ceva asa stupid
+  // Zici ca s retarded
+
+  function formatDate(date: string | undefined): string | undefined {
+    if (date === "No date provided") {
+      return date;
+    } else {
+      if (date && typeof date === "string") {
+        return format(new Date(date), "dd LLL, yyyy");
+      }
+    }
+  }
+
+  function formatTime(time: string | undefined): string | undefined {
+    if (time === "No time provided") {
+      return time;
+    } else {
+      if (time && typeof time === "string") {
+        return format(new Date(time), "hh:mm a");
+      }
+    }
+  }
+
   return (
-    <div className="flex-col">
-      <div className="flex-1 space-y-4">{contact?.name}</div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mb-10">
+      <div className="space-y-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <CardTitle>Submitted on:</CardTitle>
+            <UploadCloud className="h-6 w-6 text-sky-500" />
+          </CardHeader>
+          <CardContent>
+            <p className="text-md p-3 border rounded-md">
+              <span>{format(contact?.createdAt.toString()!, "PPPPpp")}</span>
+            </p>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <CardTitle>Client info:</CardTitle>
+            <User className="h-6 w-6 text-green-500" />
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <p className="text-sm text-muted-foreground">Name:</p>
+            <div className="md:text-md p-3 border rounded-md">
+              {contact?.name}
+            </div>
+            <p className="text-sm text-muted-foreground">Email:</p>
+            <div className="md:text-md p-3 border rounded-md underline">
+              <a href={`mailto:${contact?.email}`}>{contact?.email}</a>
+            </div>
+            <p className="text-sm text-muted-foreground">Phone number:</p>
+            <div className="md:text-md p-3 border rounded-md underline">
+              <a href={`tel:${contact?.phone}`}>{contact?.phone}</a>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <CardTitle>Aditional info:</CardTitle>
+            <CalendarCheck className="h-6 w-6 text-rose-500" />
+          </CardHeader>
+          <CardContent className="space-y-2">
+            <p className="text-sm text-muted-foreground">Date of the event:</p>
+            <div className="md:text-md p-3 border rounded-md">
+              {formatDate(contact?.date)}
+            </div>
+            <p className="text-sm text-muted-foreground">Time of the event:</p>
+            <div className="md:text-md p-3 border rounded-md">
+              {formatTime(contact?.time)}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
+      <div className="space-y-4">
+        <Card>
+          <CardHeader className="flex flex-row items-center justify-between space-y-0">
+            <CardTitle>Message</CardTitle>
+            <Text className="h-6 w-6 text-orange-500" />
+          </CardHeader>
+          <CardContent>
+            <div className="md:text-md p-3 border rounded-md">
+              {contact?.message}
+            </div>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 };
