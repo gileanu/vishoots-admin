@@ -41,7 +41,7 @@ const contactPage = async ({
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full mb-10">
       <div className="space-y-4">
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader className="flex flex-row items-center justify-between space-y-0">
             <CardTitle>Submitted on:</CardTitle>
             <UploadCloud className="h-6 w-6 text-sky-500" />
@@ -52,7 +52,7 @@ const contactPage = async ({
             </p>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader className="flex flex-row items-center justify-between space-y-0">
             <CardTitle>Client info:</CardTitle>
             <User className="h-6 w-6 text-green-500" />
@@ -72,7 +72,7 @@ const contactPage = async ({
             </div>
           </CardContent>
         </Card>
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader className="flex flex-row items-center justify-between space-y-0">
             <CardTitle>Aditional info:</CardTitle>
             <CalendarCheck className="h-6 w-6 text-rose-500" />
@@ -90,7 +90,7 @@ const contactPage = async ({
         </Card>
       </div>
       <div className="space-y-4">
-        <Card>
+        <Card className="shadow-lg">
           <CardHeader className="flex flex-row items-center justify-between space-y-0">
             <CardTitle>Message</CardTitle>
             <Text className="h-6 w-6 text-orange-500" />

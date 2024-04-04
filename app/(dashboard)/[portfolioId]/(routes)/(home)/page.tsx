@@ -1,4 +1,3 @@
-import prismadb from "@/lib/prismadb";
 import { ContactClient } from "./components/client";
 import { ContactColumn } from "./components/columns";
 import { format } from "date-fns";
@@ -34,8 +33,8 @@ const contactPage = async ({ params }: { params: { portfolioId: string } }) => {
             desc="Overview of your portfolio"
           />
           <Separator />
-          <div className="grid gap-4 grid-cols-2">
-            <Card>
+          <div className="grid gap-4 grid-cols-1 sm:grid-cols-2">
+            <Card className="shadow-lg">
               <CardHeader className="flex flex-row items-center justify-between space-y-0">
                 <CardTitle>Categories:</CardTitle>
                 <Image className="h-6 w-6 text-muted-foreground" />
@@ -49,7 +48,7 @@ const contactPage = async ({ params }: { params: { portfolioId: string } }) => {
                 </Button>
               </CardContent>
             </Card>
-            <Card>
+            <Card className="shadow-lg">
               <CardHeader className="flex flex-row items-center justify-between space-y-0">
                 <CardTitle>Galleries:</CardTitle>
                 <Images className="h-6 w-6 text-muted-foreground" />
