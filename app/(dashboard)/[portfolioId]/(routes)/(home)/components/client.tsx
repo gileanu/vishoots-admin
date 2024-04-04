@@ -14,7 +14,7 @@ export const ContactClient: React.FC<ContactClientProps> = ({ data }) => {
     <>
       <div className="space-y-4">
         <HeadingH1
-          title={`You have ${data.length} form submitions`}
+          title={`View form submitions`}
           desc="View contact form submitions"
         />
         <Separator />
