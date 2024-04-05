@@ -126,7 +126,7 @@ const contactPage = async ({
               <Text className="h-6 w-6 text-orange-500" />
             </CardHeader>
             <CardContent>
-              <div className="md:text-md p-3 border rounded-md">
+              <div className="md:text-md p-3 border rounded-md font-sans break-words">
                 {contact?.message}
               </div>
             </CardContent>
