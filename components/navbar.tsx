@@ -26,11 +26,11 @@ const Navbar = async () => {
           Live:
         </Badge>
         <div className="border-2 px-[0.2rem] m-[0.2rem] rounded-md">
-          <Link target="_blank" href={`${process.env.LIVE_WEB}`}>
+          <a target="_blank" href={`${process.env.LIVE_WEB}`}>
             <code className="text-sm hover:underline">
-              {process.env.LIVE_WEB}
+              {process.env.LIVE_WEB_NAME}
             </code>
-          </Link>
+          </a>
         </div>
         <div className="ml-auto flex items-center space-x-2">
           <ThemeToggle />
