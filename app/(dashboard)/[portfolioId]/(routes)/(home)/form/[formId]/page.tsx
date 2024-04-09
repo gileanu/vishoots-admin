@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { HeadingH1 } from "@/components/ui/headingh1";
+import { HeadingH1 } from "@/components/headingh1";
 import { Separator } from "@/components/ui/separator";
 
 import prismadb from "@/lib/prismadb";

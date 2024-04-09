@@ -1,7 +1,7 @@
 import { ContactClient } from "./components/client";
 import { ContactColumn } from "./components/columns";
 import { format } from "date-fns";
-import { HeadingH1 } from "@/components/ui/headingh1";
+import { HeadingH1 } from "@/components/headingh1";
 import { Separator } from "@/components/ui/separator";
 import { getCategories } from "@/actions/get-categories";
 import { getGalleries } from "@/actions/get-galleries";
