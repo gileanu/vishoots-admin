@@ -36,12 +36,12 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
 
   return (
     <div>
-      <ScrollArea>
+      <ScrollArea className="mb-2">
         <div className="mb-4 flex items-center gap-4">
           {value.map((url) => (
             <div
               key={url}
-              className="relative w-[200px] h-[200px] rounded-md overflow-hidden"
+              className="relative w-[250px] h-[250px] rounded-md overflow-hidden"
             >
               <div className="z-10 absolute top-2 right-2">
                 <Button
@@ -53,11 +53,8 @@ const ImageUpload: React.FC<ImageUploadProps> = ({
                   <Trash className="h-4 w-4" />
                 </Button>
               </div>
-              <Image
-                fill
-                quality={20}
-                unoptimized
-                className="object-cover"
+              <img
+                className="object-cover w-[250px] h-[250px]"
                 alt="Image"
                 src={url}
               />

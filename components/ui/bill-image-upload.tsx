@@ -38,7 +38,7 @@ const BillImageUpload: React.FC<BillImageUploadProps> = ({
         {value.map((url) => (
           <div
             key={url}
-            className="relative w-[500px] h-[200px] overflow-hidden rounded-md"
+            className="relative w-full md:w-1/2 h-full overflow-hidden rounded-md"
           >
             <div className="z-10 absolute top-2 right-2">
               <Button
@@ -50,14 +50,7 @@ const BillImageUpload: React.FC<BillImageUploadProps> = ({
                 <Trash className="h-4 w-4" />
               </Button>
             </div>
-            <Image
-              quality={20}
-              fill
-              unoptimized
-              className="object-cover"
-              alt="Image"
-              src={url}
-            />
+            <img className="object-cover" alt="Image" src={url} />
           </div>
         ))}
       </div>
