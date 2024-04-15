@@ -58,7 +58,9 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       <div className="flex flex-row justify-center">
         <Button
           variant="link"
-          onClick={() => router.push(`/${params.portfolioId}/form/${data.id}`)}
+          onClick={() =>
+            router.push(`/${params.portfolioId}/forms/form/${data.id}`)
+          }
         >
           <ExternalLink className="mr-2 h-4 w-4" />
           View

@@ -31,6 +31,11 @@ export function MainNav({
       label: "Galleries",
       active: pathname === `/${params.portfolioId}/galleries`,
     },
+    {
+      href: `/${params.portfolioId}/forms`,
+      label: "Clients",
+      active: pathname === `/${params.portfolioId}/forms`,
+    },
   ];
   return (
     <nav className={cn("flex items-center space-x-4 lg:space-x-6", className)}>
