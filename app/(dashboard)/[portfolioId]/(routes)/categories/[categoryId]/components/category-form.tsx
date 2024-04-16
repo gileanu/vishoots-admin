@@ -10,7 +10,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { HeadingH1 } from "@/components/ui/headingh1";
+import { HeadingH1 } from "@/components/headingh1";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -24,7 +24,7 @@ import toast from "react-hot-toast";
 import * as z from "zod";
 
 import { generateSlug } from "@/lib/name-to-slug";
-import BillImageUpload from "@/components/ui/bill-image-upload";
+import BillImageUpload from "@/components/bill-image-upload";
 
 const formSchema = z.object({
   name: z.string().min(3, "Category name must be at least 3 characters long"),

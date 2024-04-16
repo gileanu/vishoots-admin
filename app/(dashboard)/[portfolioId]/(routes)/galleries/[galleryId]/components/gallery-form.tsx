@@ -11,7 +11,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { HeadingH1 } from "@/components/ui/headingh1";
+import { HeadingH1 } from "@/components/headingh1";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -22,8 +22,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import * as z from "zod";
-import BillImageUpload from "@/components/ui/bill-image-upload";
-import ImageUpload from "@/components/ui/image-upload";
+import BillImageUpload from "@/components/bill-image-upload";
+import ImageUpload from "@/components/image-upload";
 import { Category, Gallery, Image } from "@prisma/client";
 
 import {

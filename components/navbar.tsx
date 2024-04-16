@@ -1,9 +1,7 @@
 import { UserButton, auth } from "@clerk/nextjs";
 import { MainNav } from "./main-nav";
 import { redirect } from "next/navigation";
-import Link from "next/link";
 import { Badge } from "./ui/badge";
-import { ThemeProvider } from "next-themes";
 import { ThemeToggle } from "./theme-toggle";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
@@ -19,12 +17,7 @@ const Navbar = async () => {
  fixed z-50 backdrop-blur-md bg-white/80 dark:bg-background/60 w-full"
     >
       <div className="flex h-8 mt-2 items-center px-3">
-        <Badge
-          className="rounded-md py-[0.3rem] dark:text-black"
-          variant="green"
-        >
-          Live:
-        </Badge>
+        <Badge className="bg-green-500 text-sm dark:text-black">Live:</Badge>
         <div className="border-2 px-[0.2rem] m-[0.2rem] rounded-md">
           <a target="_blank" href={`${process.env.LIVE_WEB}`}>
             <code className="text-sm hover:underline">

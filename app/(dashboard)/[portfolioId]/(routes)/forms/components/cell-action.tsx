@@ -55,22 +55,32 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         onConfirm={onDelete}
         loading={loading}
       />
-      <div className="flex flex-row justify-center">
-        <Button
-          variant="link"
-          onClick={() => router.push(`/${params.portfolioId}/form/${data.id}`)}
-        >
-          <ExternalLink className="mr-2 h-4 w-4" />
-          View
-        </Button>
-        <Button
-          onClick={() => setOpen(true)}
-          className=""
-          variant="destructive"
-        >
-          <Trash className="h-4 w-4" />
-        </Button>
-      </div>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button variant="ghost" className="h-8 w-8 p-0">
+            <span className="sr-only">Open menu</span>
+            <MoreHorizontal className="h-4 w-4" />
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end">
+          <DropdownMenuLabel>Quick actions</DropdownMenuLabel>
+          <DropdownMenuItem
+            onClick={() =>
+              router.push(`/${params.portfolioId}/forms/form/${data.id}`)
+            }
+          >
+            <ExternalLink className="mr-2 h-4 w-4" />
+            View
+          </DropdownMenuItem>
+          <DropdownMenuItem
+            onClick={() => setOpen(true)}
+            className="text-destructive focus:text-destructive"
+          >
+            <Trash className="mr-2 h-4 w-4" />
+            Delete
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
     </>
   );
 };

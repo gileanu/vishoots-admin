@@ -6,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
 
 import { usePortfolioModal } from "@/hooks/use-portfolio-modal";
-import { Modal } from "@/components/ui/modal";
+import { Modal } from "@/components/modal";
 import {
   Form,
   FormControl,
