@@ -2,9 +2,10 @@ import { ContactClient } from "./components/client";
 import { ContactColumn } from "./components/columns";
 import { format } from "date-fns";
 import { getForms } from "@/actions/get-forms";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { HeadingH1 } from "@/components/headingh1";
 import { Separator } from "@/components/ui/separator";
+
+export const revalidate = 0;
 
 const contactPage = async ({ params }: { params: { portfolioId: string } }) => {
   const contact = await getForms(params.portfolioId);
@@ -14,6 +15,7 @@ const contactPage = async ({ params }: { params: { portfolioId: string } }) => {
     name: item.name,
     email: item.email,
     phone: item.phone,
+    IsViewed: item.IsViewed,
     createdAt: format(item.createdAt, "dd LLL, yyyy"),
   }));
   return (

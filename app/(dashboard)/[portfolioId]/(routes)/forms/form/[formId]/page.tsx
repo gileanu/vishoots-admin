@@ -25,8 +25,10 @@ const contactPage = async ({
     },
   });
 
-  // In viata mea n am scris ceva asa stupid
-  // Zici ca s retarded
+  await prismadb.contact.update({
+    where: { id: params.formId },
+    data: { IsViewed: false },
+  });
 
   function formatDate(date: string | undefined): string | undefined {
     if (date === "No date provided") {
@@ -56,7 +58,7 @@ const contactPage = async ({
           desc="Make sure to respond via email or phone"
         />
         <Button asChild>
-          <Link href={`/`}>
+          <Link href={`/${params.portfolioId}/forms`}>
             <ArrowLeft className="mr-4 h-4 w-4" />
             Go back
           </Link>

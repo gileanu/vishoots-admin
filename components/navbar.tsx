@@ -17,12 +17,7 @@ const Navbar = async () => {
  fixed z-50 backdrop-blur-md bg-white/80 dark:bg-background/60 w-full"
     >
       <div className="flex h-8 mt-2 items-center px-3">
-        <Badge
-          className="rounded-md py-[0.3rem] dark:text-black"
-          variant="green"
-        >
-          Live:
-        </Badge>
+        <Badge className="bg-green-500 text-sm dark:text-black">Live:</Badge>
         <div className="border-2 px-[0.2rem] m-[0.2rem] rounded-md">
           <a target="_blank" href={`${process.env.LIVE_WEB}`}>
             <code className="text-sm hover:underline">

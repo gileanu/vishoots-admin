@@ -7,11 +7,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FormInput, Image, Images } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import { getFormsNew } from "@/actions/get-forms-new";
 
 const contactPage = async ({ params }: { params: { portfolioId: string } }) => {
   const categories = await getCategories(params.portfolioId);
   const galleries = await getGalleries(params.portfolioId);
   const contact = await getForms(params.portfolioId);
+  const contactNew = await getFormsNew(params.portfolioId);
   return (
     <>
       <div className="flex-col">
@@ -30,9 +32,9 @@ const contactPage = async ({ params }: { params: { portfolioId: string } }) => {
               <CardContent className="space-y-6">
                 <div className="text-2xl">
                   <span className="text-green-500 font-bold">
-                    {contact.length}
+                    {contactNew.length}
                   </span>{" "}
-                  total, <span className="text-green-500 font-bold">0</span> new
+                  new, <span className="font-bold">{contact.length}</span> total
                 </div>
                 <Button variant="secondary" asChild>
                   <Link href={`/${params.portfolioId}/forms`}>
