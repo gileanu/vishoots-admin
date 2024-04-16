@@ -13,6 +13,7 @@ import {
   User,
 } from "lucide-react";
 import Link from "next/link";
+import { Router } from "next/router";
 
 const contactPage = async ({
   params,
@@ -58,10 +59,10 @@ const contactPage = async ({
           desc="Make sure to respond via email or phone"
         />
         <Button asChild>
-          <Link href={`/${params.portfolioId}/forms`}>
+          <a href={`/${params.portfolioId}/forms`}>
             <ArrowLeft className="mr-4 h-4 w-4" />
             Go back
-          </Link>
+          </a>
         </Button>
       </div>
       <Separator className="my-5" />

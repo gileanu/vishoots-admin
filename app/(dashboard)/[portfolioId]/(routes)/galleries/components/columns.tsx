@@ -2,6 +2,8 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { CellAction } from "./cell-action";
+import IsFeatured from "./is-featured";
+import IsArchived from "./is-archived";
 
 export type GalleryColumn = {
   id: string;
@@ -24,10 +26,12 @@ export const columns: ColumnDef<GalleryColumn>[] = [
   {
     accessorKey: "isFeatured",
     header: "Featured",
+    cell: ({ row }) => <IsFeatured isFeatured={row.original.isFeatured} />,
   },
   {
     accessorKey: "isArchived",
     header: "Archived",
+    cell: ({ row }) => <IsArchived IsArchived={row.original.isArchived} />,
   },
   {
     accessorKey: "createdAt",
