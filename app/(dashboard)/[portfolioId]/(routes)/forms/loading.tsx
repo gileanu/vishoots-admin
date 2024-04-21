@@ -5,7 +5,7 @@ import { Loader } from "@/components/loader";
 const Loading = () => {
   return (
     <div className="flex flex-col h-full w-full items-center justify-center">
-      <h1 className="p-10">Loading Dashboard...</h1>
+      <h1 className="p-10">Loading Forms...</h1>
       <Loader />
     </div>
   );

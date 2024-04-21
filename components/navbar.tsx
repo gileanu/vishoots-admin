@@ -1,7 +1,6 @@
 import { UserButton, auth } from "@clerk/nextjs";
 import { MainNav } from "./main-nav";
 import { redirect } from "next/navigation";
-import { Badge } from "./ui/badge";
 import { ThemeToggle } from "./theme-toggle";
 import { ScrollArea, ScrollBar } from "./ui/scroll-area";
 
