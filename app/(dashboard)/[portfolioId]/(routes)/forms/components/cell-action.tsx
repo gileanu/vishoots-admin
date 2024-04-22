@@ -9,20 +9,14 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ContactColumn } from "./columns";
 import { Button } from "@/components/ui/button";
-import {
-  Copy,
-  Edit,
-  ExternalLink,
-  MoreHorizontal,
-  Trash,
-  View,
-} from "lucide-react";
+import { ExternalLink, MoreHorizontal, Trash } from "lucide-react";
 import toast from "react-hot-toast";
 import { useParams, useRouter } from "next/navigation";
 import axios from "axios";
 import { useState } from "react";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { FormModal } from "@/components/modals/form-modal";
+import prismadb from "@/lib/prismadb";
 
 interface CellActionProps {
   data: ContactColumn;
@@ -33,6 +27,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
   const params = useParams();
   const [loading, setLoading] = useState(false);
   const [open, setOpen] = useState(false);
+  const [openView, setOpenView] = useState(false);
   const onDelete = async () => {
     try {
       setLoading(true);
@@ -47,6 +42,12 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
       setOpen(false);
     }
   };
+  const onMarkViewd = async () => {
+    await axios.patch(`/api/${params.portfolioId}/form/${data.id}`);
+    toast.success("Marked as viewed");
+    setOpenView(false);
+    router.refresh();
+  };
   return (
     <>
       <AlertModal
@@ -54,6 +55,13 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         onClose={() => setOpen(false)}
         onConfirm={onDelete}
         loading={loading}
+      />
+      <FormModal
+        isOpen={openView}
+        onClose={() => setOpenView(false)}
+        onConfirm={onMarkViewd}
+        loading={loading}
+        data={data}
       />
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
@@ -64,11 +72,7 @@ export const CellAction: React.FC<CellActionProps> = ({ data }) => {
         </DropdownMenuTrigger>
         <DropdownMenuContent align="end">
           <DropdownMenuLabel>Quick actions</DropdownMenuLabel>
-          <DropdownMenuItem
-            onClick={() =>
-              router.push(`/${params.portfolioId}/forms/form/${data.id}`)
-            }
-          >
+          <DropdownMenuItem onClick={() => setOpenView(true)}>
             <ExternalLink className="mr-2 h-4 w-4" />
             View
           </DropdownMenuItem>

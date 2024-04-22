@@ -35,7 +35,7 @@ export async function PATCH(
   try {
     const { userId } = auth();
     const body = await req.json();
-    const { name, billboardId, categorySlug, imageUrl, categoryDesc } = body;
+    const { name, categorySlug, imageUrl, categoryDesc } = body;
     if (!userId) {
       return new NextResponse("Unauthenticated", { status: 401 });
     }

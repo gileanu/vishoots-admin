@@ -15,6 +15,9 @@ const contactPage = async ({ params }: { params: { portfolioId: string } }) => {
     name: item.name,
     email: item.email,
     phone: item.phone,
+    date: item.date,
+    time: item.time,
+    message: item.message,
     IsViewed: item.IsViewed,
     createdAt: format(item.createdAt, "dd LLL, yyyy"),
   }));
