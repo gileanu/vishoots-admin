@@ -27,7 +27,9 @@ export const FormModalView: React.FC<FormModalViewProps> = ({
   return (
     <Dialog open={isOpen} onOpenChange={onChange}>
       <DialogContent className="p-2">
-        <DialogHeader></DialogHeader>
+        <DialogHeader>
+          <h1 className="text-xl font-bold">Submition</h1>
+        </DialogHeader>
         <div>{children}</div>
       </DialogContent>
     </Dialog>

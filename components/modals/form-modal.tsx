@@ -6,6 +6,7 @@ import { FormModalView } from "../form-modal";
 import { ContactColumn } from "@/app/(dashboard)/[portfolioId]/(routes)/forms/components/columns";
 import { format } from "date-fns";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+import { Separator } from "../ui/separator";
 
 interface FormModalProps {
   data: ContactColumn;
@@ -54,47 +55,66 @@ export const FormModal: React.FC<FormModalProps> = ({
 
   return (
     <FormModalView isOpen={isOpen} onClose={onClose}>
-      <h2 className="pb-2">Submitted on: {data.createdAt}</h2>
-      <ScrollArea className="h-[450px] w-full rounded-md border p-3">
-        <div className="flex flex-col gap-2">
-          <p className="text-muted-foreground text-sm">Name</p>
-          <div className="md:text-md rounded-md border p-2">{data.name}</div>
-          <p className="text-muted-foreground text-sm">Email</p>
-          <div className="md:text-md rounded-md border p-2">
-            <a href={`mailto:${data.email}`} className="underline">
+      <div className="flex flex-col gap-2 w-full text-muted-foreground">
+        <div>
+          <p className="text-sm">Name:</p>
+          <div className="border p-2 rounded-md">
+            <p className="text-foreground">{data.name}</p>
+          </div>
+        </div>
+        <div>
+          <p className="text-sm">Email:</p>
+          <div className="border p-2 rounded-md">
+            <a
+              href={`mailto:${data.email}`}
+              className="text-foreground underline"
+            >
               {data.email}
             </a>
           </div>
-          <p className="text-muted-foreground text-sm">Phone</p>
-          <div className="md:text-md rounded-md border p-2">
-            <a href={`tel:${data.phone}`} className="underline">
+        </div>
+        <div>
+          <p className="text-sm">Phone number:</p>
+          <div className="border p-2 rounded-md">
+            <a href={`tel:${data.phone}`} className="text-foreground underline">
               {data.phone}
             </a>
           </div>
-          <p className="text-muted-foreground text-sm">Date and time</p>
-          <div className="flex flex-row gap-1 justify-start items-center">
-            <div className="md:text-md rounded-md border p-2">
-              {formatDate(data.date)}
-            </div>
-            <p>at</p>
-            <div className="md:text-md rounded-md border p-2">
-              {formatTime(data.time)}
+        </div>
+        <div className="flex flex-row gap-2">
+          <div className="w-1/2">
+            <p className="text-sm">Date of the event:</p>
+            <div className="border p-2 rounded-md">
+              <p>{formatDate(data.date)}</p>
             </div>
           </div>
-          <p className="text-muted-foreground text-sm">Name</p>
-          <div className="md:text-md rounded-md border p-2 break-words">
-            {data.message}
+          <div className="w-1/2">
+            <p className="text-sm">Time of the event:</p>
+            <div className="border p-2 rounded-md">
+              <p>{formatTime(data.time)}</p>
+            </div>
           </div>
         </div>
-        <ScrollBar />
-      </ScrollArea>
-      <div className="pt-3 space-x-2 flex items-center w-full">
+        <div className="relative">
+          <p className="text-sm">Message:</p>
+          <div className="rounded-md">
+            <ScrollArea className="h-40 rounded-md border p-1">
+              <p className="relative break-all">{data.message}</p>
+            </ScrollArea>
+          </div>
+        </div>
+      </div>
+      <div className="pt-2 space-x-2 flex flex-row justify-start">
         <Button variant="outline" disabled={loading} onClick={onClose}>
           Close
         </Button>
         <Button variant="default" disabled={!data.IsViewed} onClick={onConfirm}>
           Mark as viewed
         </Button>
+        <h2 className="text-muted-foreground text-sm">
+          <p>Dated:</p>
+          {data.createdAt}
+        </h2>
       </div>
     </FormModalView>
   );

@@ -6,7 +6,7 @@ type IsViewedProps = {
 };
 
 const IsViewed: React.FC<IsViewedProps> = ({ isViewed }) => {
-  const text = isViewed ? "New!" : "Old";
+  const text = isViewed ? "New!" : "Viewed";
   const color = isViewed
     ? "bg-green-500 text-xs font-sans text-slate-800 px-5"
     : "bg-gray-200 text-xs font-sans text-slate-800 px-5";
