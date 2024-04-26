@@ -98,8 +98,10 @@ export const FormModal: React.FC<FormModalProps> = ({
         <div className="relative">
           <p className="text-sm">Message:</p>
           <div className="rounded-md">
-            <ScrollArea className="h-40 rounded-md border p-1">
-              <p className="relative break-all">{data.message}</p>
+            <ScrollArea className="h-40 rounded-md border p-2">
+              <p className="relative break-words max-w-[470px]">
+                {data.message}
+              </p>
             </ScrollArea>
           </div>
         </div>
