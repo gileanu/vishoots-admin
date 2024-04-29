@@ -18,12 +18,12 @@ export async function PATCH(
 
     const CONTACT = await prismadb.contact.findUnique({
       where: {
-        id: params.formId,
+        id: parseInt(params.formId),
       },
     });
 
     await prismadb.contact.update({
-      where: { id: params.formId },
+      where: { id: parseInt(params.formId) },
       data: { IsViewed: false },
     });
 
@@ -51,7 +51,7 @@ export async function DELETE(
 
     const contact = await prismadb.contact.deleteMany({
       where: {
-        id: params.formId,
+        id: parseInt(params.formId),
       },
     });
 

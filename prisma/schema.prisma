@@ -67,7 +67,7 @@ model Image {
 }
 
 model Contact {
-  id                String      @id @default(uuid())
+  id                Int         @id @default(autoincrement())
   name              String      @default("")
   IsViewed          Boolean     @default(true)
   email             String      @default("")
