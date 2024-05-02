@@ -7,7 +7,7 @@ import { ArrowUpDown, Zap } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 
 export type ContactColumn = {
-  id: string;
+  id: number;
   name: string;
   email: string;
   phone: string;
