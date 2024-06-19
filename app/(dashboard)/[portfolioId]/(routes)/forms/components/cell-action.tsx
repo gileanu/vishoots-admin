@@ -16,7 +16,6 @@ import axios from "axios";
 import { useState } from "react";
 import { AlertModal } from "@/components/modals/alert-modal";
 import { FormModal } from "@/components/modals/form-modal";
-import prismadb from "@/lib/prismadb";
 
 interface CellActionProps {
   data: ContactColumn;

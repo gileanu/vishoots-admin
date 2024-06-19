@@ -3,8 +3,7 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { CellAction } from "./cell-action";
 import IsViewed from "./is-viewed";
-import { ArrowUpDown, Zap } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
+import { ArrowUpDown } from "lucide-react";
 
 export type ContactColumn = {
   id: number;
