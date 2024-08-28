@@ -43,7 +43,7 @@ export const columns: ColumnDef<ContactColumn>[] = [
           className="flex flex-row cursor-pointer hover:underline"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Created
+          Submitted
           <ArrowUpDown className="ml-2 mt-0.5 h-4 w-4" />
         </span>
       );
